@@ -11,7 +11,7 @@ public class PluginSettings
         TShock.SavePath,
         TShockPlugin.PluginName
     );
-    public static readonly string ConfigPath = Path.Combine(PluginDirectory, $"config.json");
+    public static readonly string ConfigPath = Path.Combine(PluginDirectory, "config.json");
 
     public static PluginSettings Config { get; set; } = new();
     #region Configs
