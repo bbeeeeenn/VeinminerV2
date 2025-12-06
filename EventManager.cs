@@ -1,8 +1,8 @@
+using Template.Events;
+using Template.Models;
 using TerrariaApi.Server;
-using TShockPlugin.Events;
-using TShockPlugin.Models;
 
-namespace TShockPlugin;
+namespace Template;
 
 public class EventManager
 {

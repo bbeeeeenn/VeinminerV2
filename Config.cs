@@ -1,19 +1,16 @@
 using Microsoft.Xna.Framework;
 using Newtonsoft.Json;
+using Template.Models;
 using TShockAPI;
-using TShockPlugin.Models;
 
-namespace TShockPlugin;
+namespace Template;
 
-public class PluginSettings
+public class Settings
 {
-    public static readonly string PluginDirectory = Path.Combine(
-        TShock.SavePath,
-        TShockPlugin.PluginName
-    );
+    public static readonly string PluginDirectory = Path.Combine(TShock.SavePath, Core.PluginName);
     public static readonly string ConfigPath = Path.Combine(PluginDirectory, "config.json");
 
-    public static PluginSettings Config { get; set; } = new();
+    public static Settings Config { get; set; } = new();
     #region Configs
 
     #endregion
@@ -35,7 +32,7 @@ public class PluginSettings
             return new ResponseMessage()
             {
                 Text =
-                    $"[{TShockPlugin.PluginName}] Config file doesn't exist yet. A new one has been created.",
+                    $"[{Core.PluginName}] Config file doesn't exist yet. A new one has been created.",
                 Color = Color.Yellow,
             };
         }
@@ -44,7 +41,7 @@ public class PluginSettings
             try
             {
                 string json = File.ReadAllText(ConfigPath);
-                PluginSettings? deserializedConfig = JsonConvert.DeserializeObject<PluginSettings>(
+                Settings? deserializedConfig = JsonConvert.DeserializeObject<Settings>(
                     json,
                     new JsonSerializerSettings()
                     {
@@ -56,7 +53,7 @@ public class PluginSettings
                     Config = deserializedConfig;
                     return new ResponseMessage()
                     {
-                        Text = $"[{TShockPlugin.PluginName}] Loaded config.",
+                        Text = $"[{Core.PluginName}] Loaded config.",
                         Color = Color.LimeGreen,
                     };
                 }
@@ -65,20 +62,18 @@ public class PluginSettings
                     return new ResponseMessage()
                     {
                         Text =
-                            $"[{TShockPlugin.PluginName}] Config file was found, but deserialization returned null.",
+                            $"[{Core.PluginName}] Config file was found, but deserialization returned null.",
                         Color = Color.Red,
                     };
                 }
             }
             catch (Exception ex)
             {
-                TShock.Log.ConsoleError(
-                    $"[{TShockPlugin.PluginName}] Error loading config: {ex.Message}"
-                );
+                TShock.Log.ConsoleError($"[{Core.PluginName}] Error loading config: {ex.Message}");
                 return new ResponseMessage()
                 {
                     Text =
-                        $"[{TShockPlugin.PluginName}] Error loading config. Check logs for more details.",
+                        $"[{Core.PluginName}] Error loading config. Check logs for more details.",
                     Color = Color.Red,
                 };
             }

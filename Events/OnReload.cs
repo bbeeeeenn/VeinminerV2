@@ -1,9 +1,9 @@
+using Template.Models;
 using TerrariaApi.Server;
 using TShockAPI;
 using TShockAPI.Hooks;
-using TShockPlugin.Models;
 
-namespace TShockPlugin.Events;
+namespace Template.Events;
 
 public class OnReload : Event
 {
@@ -20,7 +20,7 @@ public class OnReload : Event
     private void EventMethod(ReloadEventArgs e)
     {
         TSPlayer player = e.Player;
-        ResponseMessage response = PluginSettings.Load();
+        ResponseMessage response = Settings.Load();
         player.SendMessage(response.Text, response.Color);
     }
 }

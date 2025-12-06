@@ -1,7 +1,7 @@
-using TShockPlugin.Commands;
-using TShockPlugin.Models;
+using Template.Commands;
+using Template.Models;
 
-namespace TShockPlugin;
+namespace Template;
 
 public class CommandManager
 {

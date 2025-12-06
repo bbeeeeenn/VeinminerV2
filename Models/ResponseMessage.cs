@@ -1,6 +1,6 @@
 using System;
 
-namespace TShockPlugin.Models;
+namespace Template.Models;
 
 public struct ResponseMessage
 {

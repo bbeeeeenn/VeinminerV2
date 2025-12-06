@@ -1,29 +1,36 @@
-﻿using Terraria;
+﻿using Rests;
 using TerrariaApi.Server;
 using TShockAPI;
 
-namespace TShockPlugin
+namespace Template // TODO: Rename the entire namespace
 {
     [ApiVersion(2, 1)]
-    public class TShockPlugin : TerrariaPlugin
+    public class Core : TerrariaPlugin
     {
-        public static readonly string PluginName = "TShockPluginTemplate"; // Configure this
+        public static readonly string PluginName = "TShockPluginTemplate"; // TODO: Configure this
         public override string Name => PluginName;
         public override string Author => "TRANQUILZOIIP - github.com/bbeeeeenn";
         public override string Description => base.Description;
         public override Version Version => base.Version;
 
-        public TShockPlugin(Main game)
+        public Core(Terraria.Main game)
             : base(game) { }
 
         public override void Initialize()
         {
             // Load config
-            TShock.Log.ConsoleInfo(PluginSettings.Load().Text);
+            TShock.Log.ConsoleInfo(Settings.Load().Text);
             // Load events
             EventManager.RegisterAll(this);
             // Load commands
             CommandManager.RegisterAll();
+            // Load Rest Endpoints
+            RestManager.RegisterAll();
+        }
+
+        private object Test(RestRequestArgs args)
+        {
+            throw new NotImplementedException();
         }
 
         protected override void Dispose(bool disposing)
