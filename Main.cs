@@ -1,6 +1,4 @@
-﻿using Rests;
-using TerrariaApi.Server;
-using TShockAPI;
+﻿using TerrariaApi.Server;
 
 namespace Template // TODO: Rename the entire namespace
 {
@@ -19,13 +17,16 @@ namespace Template // TODO: Rename the entire namespace
         public override void Initialize()
         {
             // Load config
-            TShock.Log.ConsoleInfo(Settings.Load().Text);
+            // TShock.Log.ConsoleInfo(Settings.Load().Text);
+
             // Load events
             EventManager.RegisterAll(this);
+
             // Load commands
             CommandManager.RegisterAll();
+
             // Load Rest Endpoints
-            RestManager.RegisterAll();
+            // RestManager.RegisterAll();
         }
 
         protected override void Dispose(bool disposing)
