@@ -1,19 +1,19 @@
 using Microsoft.Xna.Framework;
 using TShockAPI;
 
-namespace VeinminerV2.Models;
+namespace BenMiner.Models;
 
 public class Vein
 {
     public class State
     {
         public int tick;
-        public bool canDrop;
+        public bool noItem;
 
-        public State(int tick, bool canDrop)
+        public State(int tick, bool noItem)
         {
             this.tick = tick;
-            this.canDrop = canDrop;
+            this.noItem = noItem;
         }
     }
 

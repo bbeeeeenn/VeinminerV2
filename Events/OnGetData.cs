@@ -1,10 +1,10 @@
+using BenMiner.Models;
 using Microsoft.Xna.Framework;
 using Terraria;
 using TerrariaApi.Server;
 using TShockAPI;
-using VeinminerV2.Models;
 
-namespace VeinminerV2.Events;
+namespace BenMiner.Events;
 
 public class OnGetData : Event
 {
@@ -49,7 +49,23 @@ public class OnGetData : Event
             return;
         }
 
+        WorldGen.KillTile_GetItemDrops(tileX, tileY, tile, out int dropItem, out _, out _, out _);
+
+        if (
+            Settings.Config.GiveItemsDirectly.DisableVeinmineWhenNoFreeSlot
+            && !player.HasSlotFor(dropItem)
+        )
+        {
+            return;
+        }
+
         args.Handled = true;
         Vein vein = Utils.GetVein(player, new Point(tileX, tileY));
+
+        if (Settings.Config.GiveItemsDirectly.Enabled)
+        {
+            player.GiveItem(vein.dropNetId, vein.dropStack);
+        }
+        Core.TileToDestroy.AddRange(vein.tilePoints);
     }
 }

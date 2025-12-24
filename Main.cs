@@ -1,11 +1,14 @@
-﻿using TerrariaApi.Server;
+﻿using BenMiner.Models;
+using Microsoft.Xna.Framework;
+using TerrariaApi.Server;
+using TShockAPI;
 
-namespace VeinminerV2 // TODO: Rename the entire namespace
+namespace BenMiner
 {
     [ApiVersion(2, 1)]
     public class Core : TerrariaPlugin
     {
-        public static readonly string PluginName = "VeinminerV2"; // TODO: Configure this
+        public static readonly string PluginName = "VeinminerV2";
         public override string Name => PluginName;
         public override string Author => "TRANQUILZOIIP - github.com/bbeeeeenn";
         public override string Description => base.Description;
@@ -17,7 +20,7 @@ namespace VeinminerV2 // TODO: Rename the entire namespace
         public override void Initialize()
         {
             // Load config
-            // TShock.Log.ConsoleInfo(Settings.Load().Text);
+            TShock.Log.ConsoleInfo(Settings.Load().Text);
 
             // Load events
             EventManager.RegisterAll(this);
@@ -34,5 +37,7 @@ namespace VeinminerV2 // TODO: Rename the entire namespace
             }
             base.Dispose(disposing);
         }
+
+        public static readonly List<KeyValuePair<Point, Vein.State>> TileToDestroy = new();
     }
 }

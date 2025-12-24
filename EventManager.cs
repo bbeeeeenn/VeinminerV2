@@ -1,8 +1,8 @@
+using BenMiner.Events;
+using BenMiner.Models;
 using TerrariaApi.Server;
-using VeinminerV2.Events;
-using VeinminerV2.Models;
 
-namespace VeinminerV2;
+namespace BenMiner;
 
 public class EventManager
 {
@@ -10,6 +10,9 @@ public class EventManager
     {
         // Events
         new OnReload(),
+        new OnGetData(),
+        new OnGameUpdate(),
+        new OnPlayerLogin(),
     };
 
     public static void RegisterAll(TerrariaPlugin plugin)

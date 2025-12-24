@@ -1,12 +1,14 @@
-using VeinminerV2.Models;
+using BenMiner.Commands;
+using BenMiner.Models;
 
-namespace VeinminerV2;
+namespace BenMiner;
 
 public class CommandManager
 {
     public static readonly List<Command> Commands = new()
     {
         // Commands
+        new Veinmine(),
     };
 
     public static void RegisterAll()

@@ -1,9 +1,9 @@
+using BenMiner.Models;
 using Microsoft.Xna.Framework;
 using Terraria;
 using TShockAPI;
-using VeinminerV2.Models;
 
-namespace VeinminerV2;
+namespace BenMiner;
 
 public class Utils
 {
@@ -19,15 +19,16 @@ public class Utils
             out _,
             out _
         );
+        int remainingSlot = player.RemainingSlotFor(itemDrop);
 
         Vein vein = new(player, itemDrop);
 
-        Stack<KeyValuePair<Point, int>> stack = new();
-        stack.Push(new(start, 0));
+        Queue<KeyValuePair<Point, int>> queue = new();
+        queue.Enqueue(new(start, 0));
 
         do
         {
-            KeyValuePair<Point, int> _ = stack.Pop();
+            KeyValuePair<Point, int> _ = queue.Dequeue();
             Point pos = _.Key;
             int tick = _.Value;
 
@@ -44,14 +45,28 @@ public class Utils
             {
                 continue;
             }
-            if (vein.owner.HasSlotFor(itemDrop, vein.dropStack + 1))
+
+            if (Settings.Config.GiveItemsDirectly.Enabled)
             {
-                vein.dropStack++;
+                if (vein.dropStack < remainingSlot)
+                {
+                    vein.dropStack++;
+                    vein.tilePoints.Add(pos, new(tick, true));
+                }
+                else if (!Settings.Config.GiveItemsDirectly.DisableVeinmineWhenNoFreeSlot)
+                {
+                    vein.tilePoints.Add(pos, new(tick, false));
+                }
+                else
+                {
+                    break;
+                }
             }
-            vein.tilePoints.Add(
-                pos,
-                new(tick, !vein.owner.HasSlotFor(itemDrop, vein.dropStack + 1))
-            );
+            else
+            {
+                vein.tilePoints.Add(pos, new(tick, false));
+            }
+
             for (int xOffset = -1; xOffset <= 1; xOffset++)
             {
                 for (int yOffset = -1; yOffset <= 1; yOffset++)
@@ -59,10 +74,10 @@ public class Utils
                     if (xOffset == 0 && yOffset == 0)
                         continue;
 
-                    stack.Push(new(new Point(pos.X + xOffset, pos.Y + yOffset), tick + 2));
+                    queue.Enqueue(new(new Point(pos.X + xOffset, pos.Y + yOffset), tick + 2));
                 }
             }
-        } while (stack.Any());
+        } while (queue.Any());
 
         return vein;
     }

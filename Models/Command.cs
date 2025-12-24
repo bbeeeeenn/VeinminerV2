@@ -1,6 +1,6 @@
 using TShockAPI;
 
-namespace VeinminerV2.Models;
+namespace BenMiner.Models;
 
 public abstract class Command
 {
