@@ -2,6 +2,8 @@
 
 Compared to my previous [VeinMiner](https://github.com/bbeeeeenn/Veinminer). Instead of everything breaking at once, the vein is cleared layer by layer with a short delay between each group of tiles, making the mining process feel more natural, visible, and satisfying.
 
+I also removed the broadcasting feature since I believe it was unnecessary.
+
 **Installation**
 
 1. [Download the plugin `.dll` file from the Releases page](https://github.com/bbeeeeenn/VeinminerV2/releases).
