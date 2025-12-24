@@ -1,8 +1,8 @@
-using Template.Events;
-using Template.Models;
 using TerrariaApi.Server;
+using VeinminerV2.Events;
+using VeinminerV2.Models;
 
-namespace Template;
+namespace VeinminerV2;
 
 public class EventManager
 {

@@ -1,6 +1,6 @@
 using TerrariaApi.Server;
 
-namespace Template.Models;
+namespace VeinminerV2.Models;
 
 public abstract class Event
 {

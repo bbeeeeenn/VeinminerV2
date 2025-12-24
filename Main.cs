@@ -1,11 +1,11 @@
 ﻿using TerrariaApi.Server;
 
-namespace Template // TODO: Rename the entire namespace
+namespace VeinminerV2 // TODO: Rename the entire namespace
 {
     [ApiVersion(2, 1)]
     public class Core : TerrariaPlugin
     {
-        public static readonly string PluginName = "TShockPluginTemplate"; // TODO: Configure this
+        public static readonly string PluginName = "VeinminerV2"; // TODO: Configure this
         public override string Name => PluginName;
         public override string Author => "TRANQUILZOIIP - github.com/bbeeeeenn";
         public override string Description => base.Description;
@@ -24,9 +24,6 @@ namespace Template // TODO: Rename the entire namespace
 
             // Load commands
             CommandManager.RegisterAll();
-
-            // Load Rest Endpoints
-            // RestManager.RegisterAll();
         }
 
         protected override void Dispose(bool disposing)

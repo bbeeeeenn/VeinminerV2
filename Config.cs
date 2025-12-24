@@ -1,9 +1,10 @@
 using Microsoft.Xna.Framework;
 using Newtonsoft.Json;
-using Template.Models;
+using Terraria.ID;
 using TShockAPI;
+using VeinminerV2.Models;
 
-namespace Template;
+namespace VeinminerV2;
 
 public class Settings
 {
@@ -12,6 +13,45 @@ public class Settings
 
     public static Settings Config { get; set; } = new();
     #region Configs
+    public bool Enabled = true;
+    public ConfigGiveItemsDirectly GiveItemsDirectly = new();
+    public int MaxTileDestroy = 1000;
+    public List<int> TileWhitelists = new()
+    {
+        TileID.Copper,
+        TileID.Tin,
+        TileID.Iron,
+        TileID.Lead,
+        TileID.Silver,
+        TileID.Tungsten,
+        TileID.Gold,
+        TileID.Platinum,
+        TileID.Meteorite,
+        TileID.Demonite,
+        TileID.Crimtane,
+        TileID.Obsidian,
+        TileID.Hellstone,
+        TileID.Cobalt,
+        TileID.Palladium,
+        TileID.Mythril,
+        TileID.Orichalcum,
+        TileID.Adamantite,
+        TileID.Titanium,
+        TileID.Chlorophyte,
+        TileID.LunarOre,
+        TileID.Diamond,
+        TileID.Ruby,
+        TileID.Emerald,
+        TileID.Sapphire,
+        TileID.Topaz,
+        TileID.Amethyst,
+        TileID.ExposedGems,
+        TileID.Silt,
+        TileID.Slush,
+        TileID.DesertFossil,
+    };
+    public string[] CommandAliases = { "veinminer", "vm" };
+    public string PermissionNode = "veinminer";
 
     #endregion
     public static void Save()
@@ -51,6 +91,7 @@ public class Settings
                 if (deserializedConfig != null)
                 {
                     Config = deserializedConfig;
+                    Save();
                     return new ResponseMessage()
                     {
                         Text = $"[{Core.PluginName}] Loaded config.",
@@ -78,5 +119,11 @@ public class Settings
                 };
             }
         }
+    }
+
+    public class ConfigGiveItemsDirectly
+    {
+        public bool Enabled = true;
+        public bool DisableVeinmineWhenNoFreeSlot = false;
     }
 }

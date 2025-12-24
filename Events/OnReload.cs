@@ -1,9 +1,9 @@
-using Template.Models;
 using TerrariaApi.Server;
 using TShockAPI;
 using TShockAPI.Hooks;
+using VeinminerV2.Models;
 
-namespace Template.Events;
+namespace VeinminerV2.Events;
 
 public class OnReload : Event
 {

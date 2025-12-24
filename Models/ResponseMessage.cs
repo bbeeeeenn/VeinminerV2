@@ -1,6 +1,6 @@
 using System;
 
-namespace Template.Models;
+namespace VeinminerV2.Models;
 
 public struct ResponseMessage
 {

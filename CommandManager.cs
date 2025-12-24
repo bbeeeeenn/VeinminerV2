@@ -1,14 +1,12 @@
-using Template.Commands;
-using Template.Models;
+using VeinminerV2.Models;
 
-namespace Template;
+namespace VeinminerV2;
 
 public class CommandManager
 {
     public static readonly List<Command> Commands = new()
     {
         // Commands
-        new DummyCommand(),
     };
 
     public static void RegisterAll()
