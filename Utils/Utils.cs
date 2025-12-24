@@ -67,16 +67,20 @@ public class Utils
                 vein.tilePoints.Add(pos, new(tick, false));
             }
 
-            for (int xOffset = -1; xOffset <= 1; xOffset++)
-            {
-                for (int yOffset = -1; yOffset <= 1; yOffset++)
-                {
-                    if (xOffset == 0 && yOffset == 0)
-                        continue;
+            // for (int xOffset = -1; xOffset <= 1; xOffset++)
+            // {
+            //     for (int yOffset = -1; yOffset <= 1; yOffset++)
+            //     {
+            //         if (xOffset == 0 && yOffset == 0)
+            //             continue;
 
-                    queue.Enqueue(new(new Point(pos.X + xOffset, pos.Y + yOffset), tick + 2));
-                }
-            }
+            //         queue.Enqueue(new(new Point(pos.X + xOffset, pos.Y + yOffset), tick + 2));
+            //     }
+            // }
+            queue.Enqueue(new(new Point(pos.X, pos.Y - 1), tick + 2));
+            queue.Enqueue(new(new Point(pos.X, pos.Y + 1), tick + 2));
+            queue.Enqueue(new(new Point(pos.X - 1, pos.Y), tick + 2));
+            queue.Enqueue(new(new Point(pos.X + 1, pos.Y), tick + 2));
         } while (queue.Any());
 
         return vein;

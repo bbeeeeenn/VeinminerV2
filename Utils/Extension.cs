@@ -26,13 +26,14 @@ public static class Extension
         if (!Settings.Config.GiveItemsDirectly.Enabled)
             return 0;
 
+        Item sample = TShock.Utils.GetItemById(netId);
         int count = 0;
         for (int i = 0; i < 50; i++)
         {
             Item currSlot = player.TPlayer.inventory[i];
             if (currSlot.stack == 0 || currSlot.netID == netId)
             {
-                count += currSlot.maxStack - currSlot.stack;
+                count += sample.maxStack - currSlot.stack;
             }
         }
         return count;
