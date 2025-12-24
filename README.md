@@ -34,7 +34,7 @@ The plugin stores its configuration in `tshock/VeinMiner/config.json`. Below is 
 		"Enabled": true,
 		"DisableVeinmineWhenNoFreeSlot": false
 	},
-	"MaxTileDestroy": 100,
+	"MaxTileDestroy": 1000,
 	"TileIds": [
 		7, 166, 6, 167, 9, 168, 8, 169, 37, 22, 204, 56, 58, 107, 221, 108, 222,
 		111, 223, 211, 408, 68, 64, 65, 63, 66, 67, 178, 123, 224, 404
@@ -53,7 +53,7 @@ Notes on options:
    -  `Enabled` (bool): If `true`, the plugin attempts to give items directly to the player.
    -  `DisableVeinmineWhenNoFreeSlot` (bool): If `true` and the player has no free inventory slots, the vein-mine action will be suppressed (no tiles will be removed for that vein). If `false`, the plugin will break the tiles normally and drop items on the ground when inventory space is insufficient.
 
--  `MaxTileDestroy` (int): Maximum number of tiles the vein-miner algorithm will consider/destroy in one operation. Default is `100`.
+-  `MaxTileDestroy` (int): Maximum number of tiles the vein-miner algorithm will consider/destroy in one operation. Default is `1000`.
 
 -  `TileIds` (array): List of tile types the vein-miner will consider as part of veins. The defaults include common ores, gems and some special tiles (see example above). These entries correspond to tile identifiers (original code uses `Terraria.ID.TileID` constants).
 
