@@ -41,6 +41,7 @@ public class Utils
                 || pos.X >= Main.maxTilesX
                 || pos.Y >= Main.maxTilesY
                 || vein.tilePoints.Keys.Any(tp => tp.Equals(pos))
+                || Core.TileToDestroy.Any(kv => kv.Key.Equals(pos))
             )
             {
                 continue;
@@ -81,7 +82,7 @@ public class Utils
             queue.Enqueue(new(new Point(pos.X, pos.Y + 1), tick + 2));
             queue.Enqueue(new(new Point(pos.X - 1, pos.Y), tick + 2));
             queue.Enqueue(new(new Point(pos.X + 1, pos.Y), tick + 2));
-        } while (queue.Any());
+        } while (queue.Any() && vein.tilePoints.Count < Settings.Config.MaxTileDestroy);
 
         return vein;
     }

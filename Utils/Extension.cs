@@ -8,7 +8,7 @@ public static class Extension
     public static bool HasSlotFor(this TSPlayer player, int netId, int stack = 1)
     {
         if (!Settings.Config.GiveItemsDirectly.Enabled)
-            return false;
+            return true;
 
         for (int i = 0; i < NetItem.InventorySlots; i++)
         {

@@ -48,6 +48,12 @@ public class OnGetData : Event
         {
             return;
         }
+        if (Core.TileToDestroy.Any(kv => kv.Key.Equals(new Point(tileX, tileY))))
+        // Prevent veinmining an already claimed vein.
+        {
+            args.Handled = true;
+            return;
+        }
 
         WorldGen.KillTile_GetItemDrops(tileX, tileY, tile, out int dropItem, out _, out _, out _);
 
@@ -55,13 +61,13 @@ public class OnGetData : Event
             Settings.Config.GiveItemsDirectly.DisableVeinmineWhenNoFreeSlot
             && !player.HasSlotFor(dropItem)
         )
+        // Mine the ore normally
         {
             return;
         }
 
         args.Handled = true;
         Vein vein = Utils.GetVein(player, new Point(tileX, tileY));
-
         if (Settings.Config.GiveItemsDirectly.Enabled)
         {
             player.GiveItem(vein.dropNetId, vein.dropStack);
