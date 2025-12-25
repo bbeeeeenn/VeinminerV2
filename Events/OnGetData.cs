@@ -39,12 +39,14 @@ public class OnGetData : Event
         short tileY = reader.ReadInt16();
         short flag = reader.ReadInt16();
         if (action != 0 || flag != 0)
+        // Return if not a successful killtile packet
         {
             return;
         }
 
         ITile tile = Main.tile[tileX, tileY];
         if (!Settings.Config.TileWhitelists.Contains(tile.type))
+        // Return if the block is not in the whitelist
         {
             return;
         }

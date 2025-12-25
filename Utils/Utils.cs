@@ -78,10 +78,10 @@ public class Utils
             //         queue.Enqueue(new(new Point(pos.X + xOffset, pos.Y + yOffset), tick + 2));
             //     }
             // }
-            queue.Enqueue(new(new Point(pos.X, pos.Y - 1), tick + 2));
-            queue.Enqueue(new(new Point(pos.X, pos.Y + 1), tick + 2));
-            queue.Enqueue(new(new Point(pos.X - 1, pos.Y), tick + 2));
-            queue.Enqueue(new(new Point(pos.X + 1, pos.Y), tick + 2));
+            queue.Enqueue(new(new Point(pos.X, pos.Y - 1), tick + 2)); // top
+            queue.Enqueue(new(new Point(pos.X, pos.Y + 1), tick + 2)); // bottom
+            queue.Enqueue(new(new Point(pos.X - 1, pos.Y), tick + 2)); // left
+            queue.Enqueue(new(new Point(pos.X + 1, pos.Y), tick + 2)); // right
         } while (queue.Any() && vein.tilePoints.Count < Settings.Config.MaxTileDestroy);
 
         return vein;
