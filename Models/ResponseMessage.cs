@@ -1,4 +1,4 @@
-namespace BenMiner.Models;
+namespace VeinminerV2.Models;
 
 public struct ResponseMessage
 {

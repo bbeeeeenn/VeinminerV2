@@ -1,7 +1,7 @@
-using BenMiner.Commands;
-using BenMiner.Models;
+using VeinminerV2.Commands;
+using VeinminerV2.Models;
 
-namespace BenMiner;
+namespace VeinminerV2;
 
 public class CommandManager
 {

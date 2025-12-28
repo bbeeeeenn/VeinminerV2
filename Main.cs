@@ -1,9 +1,9 @@
-﻿using BenMiner.Models;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using TerrariaApi.Server;
 using TShockAPI;
+using VeinminerV2.Models;
 
-namespace BenMiner
+namespace VeinminerV2
 {
     [ApiVersion(2, 1)]
     public class Core : TerrariaPlugin

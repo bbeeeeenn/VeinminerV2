@@ -1,10 +1,10 @@
-using BenMiner.Models;
 using Microsoft.Xna.Framework;
 using Newtonsoft.Json;
 using Terraria.ID;
 using TShockAPI;
+using VeinminerV2.Models;
 
-namespace BenMiner;
+namespace VeinminerV2;
 
 public class Settings
 {

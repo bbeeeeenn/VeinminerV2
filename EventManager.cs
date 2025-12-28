@@ -1,8 +1,8 @@
-using BenMiner.Events;
-using BenMiner.Models;
 using TerrariaApi.Server;
+using VeinminerV2.Events;
+using VeinminerV2.Models;
 
-namespace BenMiner;
+namespace VeinminerV2;
 
 public class EventManager
 {

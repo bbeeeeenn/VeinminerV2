@@ -1,10 +1,10 @@
-using BenMiner.Models;
 using Microsoft.Xna.Framework;
 using Terraria;
 using TerrariaApi.Server;
 using TShockAPI;
+using VeinminerV2.Models;
 
-namespace BenMiner.Events;
+namespace VeinminerV2.Events;
 
 public class OnGetData : Event
 {

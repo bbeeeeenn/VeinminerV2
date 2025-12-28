@@ -1,9 +1,9 @@
-using BenMiner.Models;
 using Microsoft.Xna.Framework;
 using Terraria;
 using TShockAPI;
+using VeinminerV2.Models;
 
-namespace BenMiner;
+namespace VeinminerV2;
 
 public class Utils
 {

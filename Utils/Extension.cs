@@ -1,7 +1,7 @@
 using Terraria;
 using TShockAPI;
 
-namespace BenMiner;
+namespace VeinminerV2;
 
 public static class Extension
 {

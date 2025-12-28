@@ -1,7 +1,7 @@
 using TerrariaApi.Server;
 using TShockAPI.Hooks;
 
-namespace BenMiner.Events;
+namespace VeinminerV2.Events;
 
 public class OnPlayerLogin : Models.Event
 {

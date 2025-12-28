@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using TShockAPI;
 
-namespace BenMiner.Commands;
+namespace VeinminerV2.Commands;
 
 public class Veinmine : Models.Command
 {

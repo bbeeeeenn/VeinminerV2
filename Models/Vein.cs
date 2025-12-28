@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 using TShockAPI;
 
-namespace BenMiner.Models;
+namespace VeinminerV2.Models;
 
 public class Vein
 {
