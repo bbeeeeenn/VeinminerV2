@@ -7,8 +7,8 @@ namespace VeinminerV2.Commands;
 public class Veinmine : Models.Command
 {
     public override bool AllowServer => false;
-    public override string[] Aliases { get; set; } = Settings.Config.CommandAliases;
-    public override string PermissionNode { get; set; } = Settings.Config.PermissionNode;
+    public override string[] Aliases { get; set; } = Config.Settings.CommandAliases;
+    public override string PermissionNode { get; set; } = Config.Settings.PermissionNode;
 
     public override void Execute(CommandArgs args)
     {
@@ -17,7 +17,7 @@ public class Veinmine : Models.Command
             args.Player.SendErrorMessage("You must log-in first.");
             return;
         }
-        if (!Settings.Config.Enabled)
+        if (!Config.Settings.Enabled)
         {
             args.Player.SendErrorMessage("Veinmining is disabled.");
             return;

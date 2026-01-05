@@ -23,10 +23,10 @@ public class OnGetData : Event
         TSPlayer player = TShock.Players[args.Msg.whoAmI];
         if (
             args.MsgID != PacketTypes.Tile
-            || !Settings.Config.Enabled
+            || !Config.Settings.Enabled
             || !player.IsLoggedIn
             || !player.GetData<bool>("veinmining")
-            || !player.HasPermission(Settings.Config.PermissionNode)
+            || !player.HasPermission(Config.Settings.PermissionNode)
         )
         {
             return;
@@ -45,7 +45,7 @@ public class OnGetData : Event
         }
 
         ITile tile = Main.tile[tileX, tileY];
-        if (!Settings.Config.TileWhitelists.Contains(tile.type))
+        if (!Config.Settings.TileWhitelists.Contains(tile.type))
         // Return if the block is not in the whitelist
         {
             return;
@@ -60,7 +60,7 @@ public class OnGetData : Event
         WorldGen.KillTile_GetItemDrops(tileX, tileY, tile, out int dropItem, out _, out _, out _);
 
         if (
-            Settings.Config.GiveItemsDirectly.DisableVeinmineWhenNoFreeSlot
+            Config.Settings.GiveItemsDirectly.DisableVeinmineWhenNoFreeSlot
             && !player.HasSlotFor(dropItem)
         )
         // Mine the ore normally
@@ -70,7 +70,7 @@ public class OnGetData : Event
 
         args.Handled = true;
         Vein vein = Utils.GetVein(player, new Point(tileX, tileY));
-        if (Settings.Config.GiveItemsDirectly.Enabled)
+        if (Config.Settings.GiveItemsDirectly.Enabled)
         {
             player.GiveItem(vein.dropNetId, vein.dropStack);
         }

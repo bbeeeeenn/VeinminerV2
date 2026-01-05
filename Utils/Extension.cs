@@ -7,7 +7,7 @@ public static class Extension
 {
     public static bool HasSlotFor(this TSPlayer player, int netId, int stack = 1)
     {
-        if (!Settings.Config.GiveItemsDirectly.Enabled)
+        if (!Config.Settings.GiveItemsDirectly.Enabled)
             return true;
 
         for (int i = 0; i < NetItem.InventorySlots; i++)
@@ -23,7 +23,7 @@ public static class Extension
 
     public static int RemainingSlotFor(this TSPlayer player, int netId)
     {
-        if (!Settings.Config.GiveItemsDirectly.Enabled)
+        if (!Config.Settings.GiveItemsDirectly.Enabled)
             return 0;
 
         Item sample = TShock.Utils.GetItemById(netId);

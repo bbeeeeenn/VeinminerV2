@@ -6,12 +6,12 @@ using VeinminerV2.Models;
 
 namespace VeinminerV2;
 
-public class Settings
+public class Config
 {
     public static readonly string PluginDirectory = Path.Combine(TShock.SavePath, Core.PluginName);
     public static readonly string ConfigPath = Path.Combine(PluginDirectory, "config.json");
 
-    public static Settings Config { get; set; } = new();
+    public static Config Settings { get; set; } = new();
     #region Configs
     public bool Enabled = true;
     public ConfigGiveItemsDirectly GiveItemsDirectly = new();
@@ -50,13 +50,14 @@ public class Settings
         TileID.Slush,
         TileID.DesertFossil,
     };
+    public int TileKillTickDelay = 3;
     public string[] CommandAliases = { "veinminer", "vm" };
     public string PermissionNode = "veinminer";
 
     #endregion
     public static void Save()
     {
-        string configJson = JsonConvert.SerializeObject(Config, Formatting.Indented);
+        string configJson = JsonConvert.SerializeObject(Settings, Formatting.Indented);
         File.WriteAllText(ConfigPath, configJson);
     }
 
@@ -81,7 +82,7 @@ public class Settings
             try
             {
                 string json = File.ReadAllText(ConfigPath);
-                Settings? deserializedConfig = JsonConvert.DeserializeObject<Settings>(
+                Config? deserializedConfig = JsonConvert.DeserializeObject<Config>(
                     json,
                     new JsonSerializerSettings()
                     {
@@ -90,7 +91,7 @@ public class Settings
                 );
                 if (deserializedConfig != null)
                 {
-                    Config = deserializedConfig;
+                    Settings = deserializedConfig;
                     Save();
                     return new ResponseMessage()
                     {

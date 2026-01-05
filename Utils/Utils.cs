@@ -47,14 +47,14 @@ public class Utils
                 continue;
             }
 
-            if (Settings.Config.GiveItemsDirectly.Enabled)
+            if (Config.Settings.GiveItemsDirectly.Enabled)
             {
                 if (vein.dropStack < remainingSlot)
                 {
                     vein.dropStack++;
                     vein.tilePoints.Add(pos, new(tick, true));
                 }
-                else if (!Settings.Config.GiveItemsDirectly.DisableVeinmineWhenNoFreeSlot)
+                else if (!Config.Settings.GiveItemsDirectly.DisableVeinmineWhenNoFreeSlot)
                 {
                     vein.tilePoints.Add(pos, new(tick, false));
                 }
@@ -78,11 +78,19 @@ public class Utils
             //         queue.Enqueue(new(new Point(pos.X + xOffset, pos.Y + yOffset), tick + 2));
             //     }
             // }
-            queue.Enqueue(new(new Point(pos.X, pos.Y - 1), tick + 2)); // top
-            queue.Enqueue(new(new Point(pos.X, pos.Y + 1), tick + 2)); // bottom
-            queue.Enqueue(new(new Point(pos.X - 1, pos.Y), tick + 2)); // left
-            queue.Enqueue(new(new Point(pos.X + 1, pos.Y), tick + 2)); // right
-        } while (queue.Any() && vein.tilePoints.Count < Settings.Config.MaxTileDestroy);
+            queue.Enqueue(
+                new(new Point(pos.X, pos.Y - 1), tick + Config.Settings.TileKillTickDelay)
+            ); // top
+            queue.Enqueue(
+                new(new Point(pos.X, pos.Y + 1), tick + Config.Settings.TileKillTickDelay)
+            ); // bottom
+            queue.Enqueue(
+                new(new Point(pos.X - 1, pos.Y), tick + Config.Settings.TileKillTickDelay)
+            ); // left
+            queue.Enqueue(
+                new(new Point(pos.X + 1, pos.Y), tick + Config.Settings.TileKillTickDelay)
+            ); // right
+        } while (queue.Any() && vein.tilePoints.Count < Config.Settings.MaxTileDestroy);
 
         return vein;
     }

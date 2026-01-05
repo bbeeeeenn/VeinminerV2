@@ -20,7 +20,7 @@ namespace VeinminerV2
         public override void Initialize()
         {
             // Load config
-            TShock.Log.ConsoleInfo(Settings.Load().Text);
+            TShock.Log.ConsoleInfo(Config.Load().Text);
 
             // Load events
             EventManager.RegisterAll(this);

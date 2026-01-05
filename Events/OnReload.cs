@@ -20,7 +20,7 @@ public class OnReload : Event
     private void EventMethod(ReloadEventArgs e)
     {
         TSPlayer player = e.Player;
-        ResponseMessage response = Settings.Load();
+        ResponseMessage response = Config.Load();
         player.SendMessage(response.Text, response.Color);
     }
 }
