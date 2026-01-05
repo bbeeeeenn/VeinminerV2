@@ -12,7 +12,7 @@ namespace VeinminerV2
         public override string Name => PluginName;
         public override string Author => "TRANQUILZOIIP - github.com/bbeeeeenn";
         public override string Description => "Excavates your ore vein.";
-        public override Version Version => new(1, 0, 1);
+        public override Version Version => new(1, 0, 2);
 
         public Core(Terraria.Main game)
             : base(game) { }
