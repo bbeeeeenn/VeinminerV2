@@ -57,7 +57,17 @@ public class OnGetData : Event
             return;
         }
 
-        WorldGen.KillTile_GetItemDrops(tileX, tileY, tile, out int dropItem, out _, out _, out _);
+        WorldGen.KillTile_GetItemDrops(
+            tileX,
+            tileY,
+            tile,
+            out int dropItem,
+            out _,
+            out _,
+            out _,
+            out _
+        );
+        // WorldGen.KillTile_GetItemDrops(tileX, tileY, tile, out int dropItem, out _, out _, out _);
 
         if (
             Config.Settings.GiveItemsDirectly.DisableVeinmineWhenNoFreeSlot

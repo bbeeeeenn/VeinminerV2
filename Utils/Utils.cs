@@ -17,6 +17,7 @@ public class Utils
             out int itemDrop,
             out _,
             out _,
+            out _,
             out _
         );
         int remainingSlot = player.RemainingSlotFor(itemDrop);
